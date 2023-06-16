@@ -1,7 +1,7 @@
 pipeline {
 
 //    agent any
-    agent {label: "remote"}
+    agent { node { label 'remote' } }
 
     stages {
         
