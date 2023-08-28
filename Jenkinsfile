@@ -33,6 +33,8 @@ pipeline {
                     withEnv(["JAVA_HOME=${tool 'default-11'}", "PATH=${tool 'default-11'}/bin:${env.PATH}"]) {
                         withSonarQubeEnv() {
                             sh "${scannerHome}/bin/sonar-scanner"
+                            sh "echo ${JAVA_HOME}"
+                            sh "${JAVA_HOME}/bin/java -version"
                         }
                     }
                 }
