@@ -16,11 +16,12 @@ pipeline {
         stage('Code Checkout') {
             steps {
                 sh "echo 'Code Checked Out'"
+                /*
                 checkout([
                     $class: 'GitSCM', 
                     branches: [[name: '*//*main']], 
                     userRemoteConfigs: [[url: 'https://github.com/jhanger-cb/pl_git_test.git']]
-                ])
+                ])*/
                  
             }
         }
