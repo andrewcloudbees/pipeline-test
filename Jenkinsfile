@@ -15,16 +15,22 @@ pipeline {
 
         stage('Code Checkout') {
             steps {
-/*
+                sh "echo 'Code Checked Out'"
                 checkout([
                     $class: 'GitSCM', 
                     branches: [[name: '*//*main']], 
-                    userRemoteConfigs: [[url: 'https://github.com/spring-projects/spring-petclinic.git']]
+                    userRemoteConfigs: [[url: 'https://github.com/jhanger-cb/pl_git_test.git']]
                 ])
-*/
-                sh "echo 'Code Checked Out'"
+                 
             }
         }
+
+        stage('SonarQube Analysis') {
+            def scannerHome = tool 'SonarScanner';
+            withSonarQubeEnv() {
+              sh "${scannerHome}/bin/sonar-scanner"
+            }
+          }
 
         stage(' Unit Testing') {
             steps {
