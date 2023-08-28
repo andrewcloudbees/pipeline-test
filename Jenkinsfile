@@ -31,7 +31,7 @@ pipeline {
                 script {
                     def scannerHome = tool 'yoda-cb';
                     withEnv(["JAVA_HOME=${tool 'default-11'}", "PATH=${tool 'default-11'}/bin:${env.PATH}"]) {
-                        withSonarQubeEnv() {
+                        withSonarQubeEnv(["JAVA_HOME=${tool 'default-11'}", "PATH=${tool 'default-11'}/bin:${env.PATH}"]) {
                             sh "${scannerHome}/bin/sonar-scanner"
                             sh "echo ${JAVA_HOME}"
                             sh "${JAVA_HOME}/bin/java -version"
