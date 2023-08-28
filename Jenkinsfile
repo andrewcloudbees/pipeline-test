@@ -30,6 +30,7 @@ pipeline {
             steps {
                 script {
                     def scannerHome = tool 'yoda-cb';
+                    def javaHome = tool 'default-11';
                     withSonarQubeEnv() {
                         sh "${scannerHome}/bin/sonar-scanner"
                     }
